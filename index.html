@@ -76,29 +76,27 @@ const lines = [
 let i = 0;
 
 function showText(){
-  if(i < lines.length){
-    const el = document.getElementById("text");
+  const el = document.getElementById("text");
 
-    el.style.opacity = 0;
-
-    setTimeout(()=>{
-      el.innerText = lines[i];
-
-      if(i === lines.length - 1){
-        el.classList.add("reveal");
-      }
-
-      el.style.opacity = 1;
-    },800);
-
-    i++;
-    setTimeout(showText,3500);
+  if(i >= lines.length){
+    return; // stop → prevents undefined
   }
+
+  el.style.opacity = 0;
+
+  setTimeout(()=>{
+    el.innerText = lines[i];
+
+    if(i === lines.length - 1){
+      el.classList.add("reveal");
+    }
+
+    el.style.opacity = 1;
+    i++;
+
+    setTimeout(showText,3500);
+  },800);
 }
-
-showText();
-
-};
 </script>
 </body>
 </html>
