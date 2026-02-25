@@ -51,12 +51,14 @@ body{
 <script>
 window.onload = function(){
 
-// audio start after click
+const music = document.getElementById("bgMusic");
+
 document.body.addEventListener("click", function(){
-  document.getElementById("bgMusic").play();
+  music.currentTime = 0;
+  music.play().catch(()=>{});
   const t=document.getElementById("tap");
   if(t) t.style.display="none";
-});
+}, { once:true });
 
 const lines = [
 "Iss sheher ki sabse sundar ladki kon hai pata hai… TUM.",
@@ -96,6 +98,5 @@ showText();
 
 };
 </script>
-
 </body>
 </html>
