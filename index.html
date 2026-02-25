@@ -47,24 +47,26 @@ body{
 <div id="text">Tap anywhere ✨</div>
 
 <script>
+window.onload = function(){
+
 const lines = [
-"Ye desh saans kiski wajah se le raha hai pata hai tum…",
-"Ye desh kiski wajah se chal raha hai pata hai tum…",
-"Are tum husn pari…",
-"Tum jane jawan…",
-"Tum sabse hasi…",
+"Iss sheher ki sabse sundar ladki kon hai pata hai… TUM.",
+"Ye sheher saans kiski wajah se le raha hai pata hai… TUM.",
+"Log zindagi kiski wajah se jee rahe hai pata hai… TUM.",
+"Tum husn pari…",
+"Tum jane jahan…",
+"Tum sabse haseen…",
 "Tum sabse jawan…",
 "SAUNDARYA SABUN NIRMA 🧼😂"
 ];
 
 let i = 0;
-let started = false;
 
-function show(){
+function showText(){
   if(i < lines.length){
     const el = document.getElementById("text");
 
-    el.classList.remove("show");
+    el.style.opacity = 0;
 
     setTimeout(()=>{
       el.innerText = lines[i];
@@ -73,22 +75,17 @@ function show(){
         el.classList.add("reveal");
       }
 
-      el.classList.add("show");
-    },500);
+      el.style.opacity = 1;
+    },800);
 
     i++;
-    setTimeout(show,3200);
+    setTimeout(showText,3500);
   }
 }
 
-/* Start after first click (browser audio rule) */
-document.body.addEventListener("click", ()=>{
-  if(!started){
-    document.getElementById("bgMusic").play();
-    show();
-    started = true;
-  }
-});
+showText();
+
+};
 </script>
 
 </body>
