@@ -70,7 +70,7 @@ const lines = [
 "jokes apart",
 "You are beautiful Inside Out",
 "Love you BBG.",
-"I hope this message brings smile on your ugly face" 
+"I hope this message brings smile on your ugly face"
 ];
 
 let i = 0;
@@ -79,7 +79,7 @@ function showText(){
   const el = document.getElementById("text");
 
   if(i >= lines.length){
-    return; // stop → prevents undefined
+    return;
   }
 
   el.style.opacity = 0;
@@ -97,6 +97,11 @@ function showText(){
     setTimeout(showText,3500);
   },800);
 }
+
+showText(); // ⭐ YOU MISSED THIS
+
+};
 </script>
+
 </body>
 </html>
