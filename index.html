@@ -25,9 +25,11 @@ body{
   transform:translateY(20px);
 }
 
-.show{
-  opacity:1;
-  transform:translateY(0);
+#tap{
+  position:fixed;
+  bottom:40px;
+  font-size:14px;
+  opacity:0.7;
 }
 
 .reveal{
@@ -39,15 +41,22 @@ body{
 
 <body>
 
-<!-- Background Audio -->
 <audio id="bgMusic" loop>
   <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
-<div id="text">Tap anywhere ✨</div>
+<div id="text"></div>
+<div id="tap">Tap anywhere 💗</div>
 
 <script>
 window.onload = function(){
+
+// audio start after click
+document.body.addEventListener("click", function(){
+  document.getElementById("bgMusic").play();
+  const t=document.getElementById("tap");
+  if(t) t.style.display="none";
+});
 
 const lines = [
 "Iss sheher ki sabse sundar ladki kon hai pata hai… TUM.",
