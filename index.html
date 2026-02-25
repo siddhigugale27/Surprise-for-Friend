@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Message ✨</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:black;
+  color:white;
+  font-family:'Poppins', sans-serif;
+  text-align:center;
+  overflow:hidden;
+}
+
+#text{
+  font-size:34px;
+  width:85%;
+  opacity:0;
+  transition:opacity 1.5s, transform 1.5s;
+  transform:translateY(20px);
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.reveal{
+  color:#ff7aa2;
+  font-size:38px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Audio -->
+<audio id="bgMusic" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<div id="text">Tap anywhere ✨</div>
+
+<script>
+const lines = [
+"Ye desh saans kiski wajah se le raha hai pata hai tum…",
+"Ye desh kiski wajah se chal raha hai pata hai tum…",
+"Are tum husn pari…",
+"Tum jane jawan…",
+"Tum sabse hasi…",
+"Tum sabse jawan…",
+"SAUNDARYA SABUN NIRMA 🧼😂"
+];
+
+let i = 0;
+let started = false;
+
+function show(){
+  if(i < lines.length){
+    const el = document.getElementById("text");
+
+    el.classList.remove("show");
+
+    setTimeout(()=>{
+      el.innerText = lines[i];
+
+      if(i === lines.length - 1){
+        el.classList.add("reveal");
+      }
+
+      el.classList.add("show");
+    },500);
+
+    i++;
+    setTimeout(show,3200);
+  }
+}
+
+/* Start after first click (browser audio rule) */
+document.body.addEventListener("click", ()=>{
+  if(!started){
+    document.getElementById("bgMusic").play();
+    show();
+    started = true;
+  }
+});
+</script>
+
+</body>
+</html>
